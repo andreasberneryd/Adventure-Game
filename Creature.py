@@ -16,5 +16,6 @@ class Creature:
         self.strength = strength
 
 
-
+    def __repr__(self):
+        return self.name
 

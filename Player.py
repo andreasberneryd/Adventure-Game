@@ -1,4 +1,5 @@
 from Point import Point
+from Skill import Skill
 __author__ = 'andberne'
 
 
@@ -11,6 +12,7 @@ class Player:
     skills = []
 
     def __init__(self, world):
+        self.skills.append(Skill(0, "Sword Attack 1", 80 ))
         self.world = world
         self.world[0][0].arrive(self)
 

@@ -9,7 +9,7 @@ __author__ = 'andberne'
 
 world = [[Level(1, "first", "name1"), Level(2, "second", "name2")],\
          [Level(3, "third", "name3"), Level(4, "fourth", "name4")]]
-world[0][0].items.append(Item("Sword"))
+world[0][0].items.append(Item("Sword", 10))
 world[0][0].creatures.append(Creature(0, "Monster1", 100, 100))
 world[0][0].creatures[0].skills.append(Skill(0, "Claw Attack", 8))
 len(world)
@@ -17,7 +17,7 @@ x = 0
 y = 0
 
 player = Player(world)
-player.skills.append(Skill(0, "Sword Attack 1", 10 ))
+
 print("Enter a direction to move or type quit to quit")
 
 def handle_input(input):

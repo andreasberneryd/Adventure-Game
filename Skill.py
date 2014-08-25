@@ -5,6 +5,8 @@ class Skill:
 
     def __init__(self, id, name, damage):
         self.id = id
-        self.id = name
+        self.name = name
         self.damage = damage
 
+    def __repr__(self):
+        return self.name
