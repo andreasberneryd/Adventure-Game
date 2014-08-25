@@ -1,3 +1,4 @@
+import sys
 from Level import *
 from Player import *
 from Item import *
@@ -10,7 +11,7 @@ comm = ["quit", "q"]
 def handle_input(input, player):
 	global move, action, comm
 	if input in move:
-		pass
+		handle_movement(input, player)
 	elif input in action:
 		handle_action(input, player)
 	elif input in comm:
@@ -30,4 +31,10 @@ def handle_action(input, player):
 
 def handle_movement(input, player):
 	if input in move[0:2]:
-		player.move()
+		player.move(-1,0)
+	if input in move[2:4]:
+		player.move(1,0)
+	if input in move[4:6]:
+		player.move(0,-1)
+	if input in move[6:8]:
+		player.move(0,1)

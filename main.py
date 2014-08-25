@@ -16,12 +16,8 @@ x = 0
 y = 0
 
 player = Player(world)
-print("Enter a direction to move or type quit to quit")
-
-def h_input(input):
-	global player
-	handle_input(input, player)
+print "Enter a direction to move or type quit to quit"
 
 while (True):
     input = raw_input("What do you want to do? > ")
-    h_input(input)
+    handle_input(input)
