@@ -22,6 +22,21 @@ class Level:
         if len(self.creatures) > 0:
             self.fight(player)
 
+# returns index of picked object
+    def object_picker(self, objects, message):
+        for i in xrange(0, len(objects)):
+                print "%d : %s" % (i, objects[i])
+
+        while True:
+            try:
+                index = int(raw_input(message))
+            except:
+                print "input must be a number"
+                continue
+            if index < len(objects):
+                return index
+            else:
+                print "Invalid input, type the number in front of the object to pick"
 
 
     def fight(self, player):
@@ -29,36 +44,26 @@ class Level:
         print "You just started a fight with %s!" % creature
         while True:
             print "Creature health: %d, Your health: %d" % (self.creatures[0].health, player.health)
-            #player attack
-            # print player.inventory[0]
-            # for i in xrange(0, len(player.inventory)):
-            #     print "%d : %s" % (i, player.inventory[i])
-            # weapon = int(raw_input("Pick item to attack with"))
-            print player.skills[0].name
-            for i in xrange(0, len(player.skills)):
-                print "%d : %s" % (i, player.skills[i])
+            # Pick a weapon
 
-            valid_input = False
-            while not valid_input:
-                skill = int(raw_input("Pick skill to use: "))
-                if skill < len(player.skills):
-                    valid_input = True
-                else:
-                    print "invalid input type the number of the object to pick"
+            # Pick a skill
+            skill_index = self.object_picker(player.skills, "Pick a skill to use: ")
 
-            player_damage = player.skills[skill].damage * random()
+            player_damage = player.skills[skill_index].damage * random()
             creature.health -= player_damage
-            print "You attacked the creature using skill %s and dealt %d damage" % (player.skills[i], player_damage)
+
+            print "You attacked %s using skill %s and dealt %d damage" % (creature, player.skills[skill_index], player_damage)
 
             if creature.health <= 0:
                 print "you killed the monster!"
+                self.creatures.remove(creature)
                 break
 
 
             # creature attack
             creature_damage = int(creature.strength * random())
             player.health -= creature_damage
-            print "creature attacked you and dealt %s damage" % creature_damage
+            print "%s attacked you and dealt %d damage" % (creature, creature_damage)
 
 
             if player.health <= 0:
