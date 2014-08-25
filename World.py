@@ -20,4 +20,5 @@ def generate_world(world):
 
 def generate_row(row, size):
 	for i in range(size):
-		row.append(Level(i, "Fascinating description", place_names[random.randint(0,4)]))
+		name = place_modifiers[random.randint(0,3)] + " " + place_names[random.randint(0,4)]
+		row.append(Level(i, "Fascinating description", name))
