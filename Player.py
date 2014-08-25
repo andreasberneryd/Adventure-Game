@@ -12,6 +12,7 @@ class Player:
     strength = 0
     inventory = []
     skills = []
+    equipped = []
 
     def __init__(self, world):
         self.skills.append(Skill(0, "Sword Attack 1", 80 ))
@@ -32,15 +33,17 @@ class Player:
 
     def equip_item(self):
         print "Following items can be equipped:"
-        for item in xrange(self.inventory):
+        for item in xrange(len(self.inventory)):
             print "Weapons:"
-            if isinstance(item, Weapon):
-                print "%d : %s" % (item.id, item.name)
-        for item in xrange(self.inventory):
-            print "Weapons:"
-            if isinstance(item, Armor):
-                print "%d : %s" % (item.id, item.name)
-        id = int(raw_input())
+            if isinstance(self.inventory[item], Weapon):
+                print "%d : %s" % (item, self.inventory[item].name)
+        for item in xrange(len(self.inventory)):
+            print "Armor:"
+            if isinstance(self.inventory[item], Armor):
+                print "%d : %s" % (item, self.inventory[item].name)
+        index = int(raw_input())
+        self.equipped.append(self.inventory[index])
+        print "%s equipped!" % self.inventory[index].name
 
 
 
