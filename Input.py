@@ -29,7 +29,7 @@ def handle_action(input, player):
 	if input in action[4:6]:
 		player.print_inventory()
 	if input in action[6:8]:
-		player.equip()
+		player.equip_item()
 
 def handle_movement(input, player):
 	if input in move[0:2]:
