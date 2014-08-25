@@ -5,13 +5,14 @@ from Player import Player
 from Input import *
 from World import *
 from Item import Item
+from Weapon import Weapon
+from Armor import Armor
 from Creature import Creature
 __author__ = 'andberne'
 
-
 generate_world(world)
 
-world[0][0].items.append(Item("Sword", 10))
+world[0][0].items.append(Item("Rusty Sword", 10))
 #world[0][0].creatures.append(Creature(0, "Monster1", 100, 100))
 #world[0][0].creatures[0].skills.append(Skill(0, "Claw Attack", 8))
 

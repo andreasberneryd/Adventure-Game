@@ -1,5 +1,7 @@
 from Point import Point
 from Skill import Skill
+from Weapon import Weapon
+from Armor import Armor
 __author__ = 'andberne'
 
 
@@ -27,6 +29,21 @@ class Player:
         index = int(raw_input())
         self.inventory.append(self.world[self.position.y][self.position.x].items[index])
         self.world[self.position.y][self.position.x].items.pop(index)
+
+    def equip_item(self):
+        print "Following items can be equipped:"
+        for item in xrange(self.inventory):
+            print "Weapons:"
+            if isinstance(item, Weapon):
+                print "%d : %s" % (item.id, item.name)
+        for item in xrange(self.inventory):
+            print "Weapons:"
+            if isinstance(item, Armor):
+                print "%d : %s" % (item.id, item.name)
+        id = int(raw_input())
+
+
+
 
     def look(self):
         print "You are in %s \n" % self.world[self.position.y][self.position.x].name
