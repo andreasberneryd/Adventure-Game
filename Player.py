@@ -41,7 +41,7 @@ class Player:
             if isinstance(item, Armor):
                 print "%d : %s" % (item.id, item.name)
         id = int(raw_input())
-        
+
 
 
 
