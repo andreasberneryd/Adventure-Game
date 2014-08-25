@@ -5,7 +5,7 @@ from Item import *
 from Creature import *
 
 move = ["north", "n", "south", "s", "west", "w", "east", "e"]
-action = ["look", "l", "pick up", "p", "inventory", "i"]
+action = ["look", "l", "pick up", "p", "inventory", "i", "equip", "e"]
 comm = ["quit", "q"]
 
 def handle_input(input, player):
@@ -28,6 +28,8 @@ def handle_action(input, player):
 		player.pick_item()
 	if input in action[4:6]:
 		player.print_inventory()
+	if input in action[6:8):
+		player.equip()
 
 def handle_movement(input, player):
 	if input in move[0:2]:
