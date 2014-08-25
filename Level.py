@@ -28,6 +28,7 @@ class Level:
         while creature.health > 0 and player.health > 0:
             print "Creature health: %d, Your health: %d" % (self.creatures[0].health, player.health)
 
+
             #player attack
             print player.inventory[0]
             for i in xrange(0, len(player.inventory)):
@@ -47,3 +48,6 @@ class Level:
             # creature_damage = randint(0, 10)
             # player.health -= creature_damage
             # print "creature attacked you and dealt %s damage" % creature_damage
+
+          
+
