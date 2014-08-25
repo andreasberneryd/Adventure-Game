@@ -8,6 +8,7 @@ class Player:
     health = 100
     strength = 0
     inventory = []
+    skills = []
 
     def __init__(self, world):
         self.world = world
