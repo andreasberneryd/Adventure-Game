@@ -10,7 +10,6 @@ class Player:
     strength = 0
     inventory = []
     skills = []
-    equipped = []
 
     def __init__(self, world):
         self.skills.append(Skill(0, "Sword Attack 1", 80 ))
@@ -30,18 +29,33 @@ class Player:
         self.world[self.position.y][self.position.x].items.pop(index)
 
     def equip_item(self):
+        temp = []
+        print "-----Equip-----"
+        print ""
+        print "Your equipped items are:"
+        for i in xrange(len(self.inventory)):
+            if self.inventory[i].equipped == True:
+                temp.append(self.inventory[i])
+        if len(temp) == 0:
+            print "[None.]"
+        temp = []
+        for i in xrange(len(self.inventory)):
+            if self.inventory[i].equipped == True:
+                temp.append(self.inventory[i])
+                print "%d : %s [%s]" % (len(temp) - 1, self.inventory[i].name, self.inventory[i].__class__.__name__)
+        print ""
         print "Following items can be equipped:"
-        for item in xrange(len(self.inventory)):
-            print "Weapons:"
-            if isinstance(self.inventory[item], Weapon):
-                print "%d : %s" % (item, self.inventory[item].name)
-        for item in xrange(len(self.inventory)):
-            print "Armor:"
-            if isinstance(self.inventory[item], Armor):
-                print "%d : %s" % (item, self.inventory[item].name)
-        index = int(raw_input())
-        self.equipped.append(self.inventory[index])
-        print "%s equipped!" % self.inventory[index].name
+        for i in xrange(len(self.inventory)):
+            if self.inventory[i].equippable == True and self.inventory[i].equipped == False:
+                temp.append(self.inventory[i])
+                print "%d : %s [%s]" % (len(temp) - 1, self.inventory[i].name, self.inventory[i].__class__.__name__)
+        if len(temp) > 0:
+            print ""
+            index = int(raw_input("Choose >"))
+            temp[index].equipped = True
+        if len(temp) == 0:
+            print "[None.]"
+
 
 
 

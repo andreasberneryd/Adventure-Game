@@ -8,3 +8,6 @@ class Armor(Item):
         self.id = id
         self.name = name
         self.damage_reduction = damage_reduction
+        self.equippable = True
+        self.equipped = False
+
