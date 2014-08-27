@@ -44,6 +44,7 @@ class Player:
                 temp.append(self.inventory[i])
                 print "%d : %s [%s]" % (len(temp) - 1, self.inventory[i].name, self.inventory[i].__class__.__name__)
         print ""
+        temp = []
         print "Following items can be equipped:"
         for i in xrange(len(self.inventory)):
             if self.inventory[i].equippable == True and self.inventory[i].equipped == False:

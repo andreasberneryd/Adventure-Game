@@ -23,8 +23,13 @@ class Level:
 
     def fight(self, player):
         creature = self.creatures[0]
+        roundcounter = 1
+        print ""
         print "You just started a fight with %s!" % creature
         while True:
+            print ""
+            print "-----Fight Round %d-----" %roundcounter
+            print ""
             print "Creature health: %d, Your health: %d" % (self.creatures[0].health, player.health)
             #player attack
             # print player.inventory[0]
@@ -45,20 +50,23 @@ class Level:
 
             player_damage = player.skills[skill].damage * random()
             creature.health -= player_damage
-            print "You attacked the creature using skill %s and dealt %d damage" % (player.skills[i], player_damage)
-
+            print ""
+            print "You attacked the {0} using skill {1} and dealt {2} damage".format(creature.name, player.skills[i], int(player_damage))
+            print""
             if creature.health <= 0:
-                print "you killed the monster!"
+                print "you killed the %s" %creature.name
                 break
 
 
             # creature attack
             creature_damage = int(creature.strength * random())
             player.health -= creature_damage
-            print "creature attacked you and dealt %s damage" % creature_damage
+            print "%s attacked you and dealt %d damage" % (creature.name, creature_damage)
 
 
             if player.health <= 0:
                 print "game over you died motha fucka!"
                 sys.exit(0)
+
+            roundcounter = roundcounter + 1
 
