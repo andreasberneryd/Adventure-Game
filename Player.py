@@ -20,13 +20,33 @@ class Player:
         print self.inventory
 
     def pick_item(self):
-        print "Choose item: "
-        for i in xrange(0, len(self.world[self.position.y][self.position.x].items)):
-            print "%d : %s" % (i, self.world[self.position.y][self.position.x].items[i])
+        if len(self.world[self.position.y][self.position.x].items) > 0:
+            print ""
+            print "-----Pick up items-----: "
+            print ""
+            for i in xrange(0, len(self.world[self.position.y][self.position.x].items)):
+                print "%d : %s" % (i, self.world[self.position.y][self.position.x].items[i])
 
-        index = int(raw_input())
-        self.inventory.append(self.world[self.position.y][self.position.x].items[index])
-        self.world[self.position.y][self.position.x].items.pop(index)
+            print ""
+            print "%d : Take all." % (len(self.world[self.position.y][self.position.x].items))
+            print "%d : Back." % (len(self.world[self.position.y][self.position.x].items) + 1)
+            print ""
+            index = int(raw_input("Choose >"))
+            while index < 0 or index > len(self.world[self.position.y][self.position.x].items) + 1:
+                index = int(raw_input("Choose >"))
+            if index == len(self.world[self.position.y][self.position.x].items):
+                for i in xrange(0, len(self.world[self.position.y][self.position.x].items)):
+                    self.inventory.append(self.world[self.position.y][self.position.x].items[i])
+                self.world[self.position.y][self.position.x].items = []
+            elif index < len(self.world[self.position.y][self.position.x].items) and index >= 0:
+                self.inventory.append(self.world[self.position.y][self.position.x].items[index])
+                self.world[self.position.y][self.position.x].items.pop(index)
+            else:
+                "" #go back
+        else:
+            print ""
+            print "[There are no items to pick up in this area.]"
+            print ""
 
     def equip_item(self):
         temp = []
@@ -46,6 +66,7 @@ class Player:
         print ""
         temp = []
         print "Following items can be equipped:"
+        print ""
         for i in xrange(len(self.inventory)):
             if self.inventory[i].equippable == True and self.inventory[i].equipped == False:
                 temp.append(self.inventory[i])
@@ -53,6 +74,10 @@ class Player:
         if len(temp) > 0:
             print ""
             index = int(raw_input("Choose >"))
+            while type(index) != int or index >= len(temp):
+                print "Invalid input!"
+                print ""
+                index = int(raw_input("Choose >"))
             for i in xrange(len(self.inventory)):
                 if type(self.inventory[i]) == type(temp[index]) and self.inventory[i].equipped == True:
                     self.inventory[i].equipped = False
