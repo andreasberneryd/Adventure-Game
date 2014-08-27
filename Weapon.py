@@ -8,3 +8,6 @@ class Weapon(Item):
         self.id = id
         self.name = name
         self.damage = damage
+        self.equippable = True
+        self.equipped = False
+
