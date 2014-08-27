@@ -1,4 +1,5 @@
 import sys
+from random import choice
 from Skill import Skill
 from Level import Level
 from Player import Player
