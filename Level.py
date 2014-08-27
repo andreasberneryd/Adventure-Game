@@ -5,19 +5,16 @@ import sys
 __author__ = 'andberne'
 
 class Level:
-    id = 0
-    content = ""
-    name = ""
-    items = []
-    creatures = []
 
     def __init__(self, id, content, name):
         self.id = id
         self.content = content
         self.name = name
+	self.items = []
+	self.creatures = []
 
     def arrive(self, player):
-        print self.name
+        print "You have arrived at " + self.name
         print(self.content)
         if len(self.creatures) > 0:
             self.fight(player)

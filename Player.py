@@ -2,8 +2,6 @@ from Point import Point
 from Skill import Skill
 from Weapon import Weapon
 from Armor import Armor
-__author__ = 'andberne'
-
 
 class Player:
 

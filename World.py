@@ -1,8 +1,8 @@
 import random
 from Level import Level
 
-place_names = ["Forest", "House", "Lake", "Desert", "Cave"]
-place_modifiers = ["Old", "Haunted", "Dark", "Uninteresting"]
+place_names = ["forest", "house", "lake", "desert", "cave"]
+place_modifiers = ["an old", "a haunted", "a dark", "an uninteresting"]
 
 item_names = ["Sword", "Axe", "Bow and Arrows"]
 item_modifiers = ["Rusty", "Enchanted"]
@@ -10,8 +10,8 @@ item_modifiers = ["Rusty", "Enchanted"]
 world = []
 
 def generate_world(world):
-	sizex = 2
-	sizey = 2
+	sizex = 3
+	sizey = 3
 	
 	for i in range(sizey):
 		rowx = []
