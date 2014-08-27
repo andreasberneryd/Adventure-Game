@@ -42,7 +42,7 @@ class Player:
         for i in xrange(len(self.inventory)):
             if self.inventory[i].equipped == True:
                 temp.append(self.inventory[i])
-                print "%d : %s [%s]" % (len(temp) - 1, self.inventory[i].name, self.inventory[i].__class__.__name__)
+                print "[%s] : %s" % (self.inventory[i].__class__.__name__, self.inventory[i].name)
         print ""
         temp = []
         print "Following items can be equipped:"
@@ -53,6 +53,9 @@ class Player:
         if len(temp) > 0:
             print ""
             index = int(raw_input("Choose >"))
+            for i in xrange(len(self.inventory)):
+                if type(self.inventory[i]) == type(temp[index]) and self.inventory[i].equipped == True:
+                    self.inventory[i].equipped = False
             temp[index].equipped = True
         if len(temp) == 0:
             print "[None.]"
