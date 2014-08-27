@@ -5,7 +5,7 @@ from Creature import *
 from Weapon import *
 
 place_names = ["forest", "house", "lake", "desert", "cave", "ravine", "village"]
-place_modifiers = ["an old", "a haunted", "a dark", "an uninteresting", "a dirty", "a burnt"]
+place_modifiers = ["old", "haunted", "dark", "uninteresting", "dirty", "burnt"]
 
 item_names = ["sword", "axe", "bow with arrows", "AK-47"]
 item_modifiers = ["a rusty", "an enchanted", "a heavy"]
@@ -30,7 +30,7 @@ def generate_world(world):
 		name = choice(monster_modifiers) + " " + choice(monster_names)
 		choice(choice(world)).creatures.append(Creature(0, name, randint(25,100), randint(25,100)))
 
-	for i in range(0, sizey):
+	for i in range(0, sizey*sizex):
 		name = choice(item_modifiers) + " " + choice(item_names)
 		choice(choice(world)).items.append(Weapon(0, name, randint(15,50)))
 
