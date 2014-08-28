@@ -90,6 +90,8 @@ class Player:
 
 
     def look(self):
+	if len(self.world[self.position.y][self.position.x].items) == 0:
+		return
         print "You are in %s \n" % self.world[self.position.y][self.position.x].name
         print "The following items are available here: "
         print self.world[self.position.y][self.position.x].items

@@ -11,10 +11,10 @@ from Armor import Armor
 from Creature import Creature
 __author__ = 'andberne'
 
+print "\nAdventure Game!\nEnter a direction (north, south, west, east) to move around or type any action (look, inventory, equip, pick up, quit)\n"
+
 generate_world(world)
 player = Player(world)
-
-print("Enter a direction to move or type quit to quit")
 
 while (True):
     input = raw_input("What do you want to do? > ").lower()
