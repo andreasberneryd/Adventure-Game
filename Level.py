@@ -22,6 +22,7 @@ class Level:
 
 # returns index of picked object
     def object_picker(self, objects, message):
+        print message
         for i in xrange(0, len(objects)):
             if not isinstance(objects[i], Bandage):
                 print "%d : %s, damage: %d" % (i, objects[i], objects[i].damage)
@@ -52,9 +53,11 @@ class Level:
             # Pick a weapon
             for i in xrange(0, len(player.inventory)):
                 if isinstance(player.inventory[i], Bandage):
-                   input = raw_input("You have bandages would you like to use them?")
+                   input = raw_input("You have bandages would you like to use them? ")
                    if(input == "yes"):
                        player.health += player.inventory[i].heal
+                       print "your health is now %s" % player.health
+                       break
                    else:
                        break
                     #print "%d : %s, damage: %d" % (i, objects[i], objects[i].damage)
