@@ -14,7 +14,7 @@ class Level:
 	self.creatures = []
 
     def arrive(self, player):
-        print "You have arrived at " + self.name
+        print "You have arrived at the " + self.name
         print(self.content)
         if len(self.creatures) > 0:
             self.fight(player)
@@ -40,7 +40,8 @@ class Level:
         creature = self.creatures[0]
         roundcounter = 1
         print ""
-        print "You just started a fight with %s!" % creature
+	print "You hear something approaching, and you draw your weapons."
+        print "You just started a fight with the %s!" % creature
         while True:
             print ""
             print "-----Fight Round %d-----" %roundcounter
