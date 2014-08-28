@@ -13,6 +13,7 @@ class Player:
 
     def __init__(self, world):
         self.skills.append(Skill(0, "Sword Attack 1", 80 ))
+        self.skills.append(Skill(0, "Sword Attack 2", 80 ))
         self.world = world
         self.world[0][0].arrive(self)
 
