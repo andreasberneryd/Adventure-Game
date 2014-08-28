@@ -5,7 +5,7 @@ from Item import *
 from Creature import *
 
 move = ["north", "n", "south", "s", "west", "w", "east", "e"]
-action = ["look", "l", "pick up", "p", "inventory", "i", "equip", "e"]
+action = ["look", "pick up", "print inventory", "equip"]
 comm = ["quit", "q"]
 
 def handle_input(input, player):
@@ -13,23 +13,13 @@ def handle_input(input, player):
 	if input in move:
 		handle_movement(input, player)
 	elif input in action:
-		handle_action(input, player)
+		eval("player."+input.replace(" ",'_')+"()")
 	elif input in comm:
 		print "Are you sure you want to quit? > "
-		if raw_input() in ["yes", "y"]:
+		if raw_input().lower() in ["yes", "y"]:
 			sys.exit(0)
 	else:
 		print "invalid input"
-
-def handle_action(input, player):
-	if input in action[0:2]:
-		player.look()
-	if input in action[2:4]:
-		player.pick_item()
-	if input in action[4:6]:
-		player.print_inventory()
-	if input in action[6:8]:
-		player.equip_item()
 
 def handle_movement(input, player):
 	if input in move[0:2]:

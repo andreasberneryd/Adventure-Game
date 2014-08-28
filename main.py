@@ -17,5 +17,5 @@ player = Player(world)
 print("Enter a direction to move or type quit to quit")
 
 while (True):
-    input = raw_input("What do you want to do? > ")
+    input = raw_input("What do you want to do? > ").lower()
     handle_input(input, player)

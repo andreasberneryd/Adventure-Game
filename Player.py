@@ -20,7 +20,7 @@ class Player:
     def print_inventory(self):
         print self.inventory
 
-    def pick_item(self):
+    def pick_up(self):
         if len(self.world[self.position.y][self.position.x].items) > 0:
             print ""
             print "-----Pick up items-----: "
@@ -49,7 +49,7 @@ class Player:
             print "[There are no items to pick up in this area.]"
             print ""
 
-    def equip_item(self):
+    def equip(self):
         temp = []
         print "-----Equip-----"
         print ""
