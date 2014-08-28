@@ -22,7 +22,7 @@ class Level:
 # returns index of picked object
     def object_picker(self, objects, message):
         for i in xrange(0, len(objects)):
-                print "%d : %s" % (i, objects[i])
+                print "%d : %s, damage: %d" % (i, objects[i], objects[i].damage)
 
         while True:
             try:
@@ -48,14 +48,15 @@ class Level:
             print "Creature health: %d, Your health: %d" % (self.creatures[0].health, player.health)
             # Pick a weapon
 
-            # Pick a skill
-            skill_index = self.object_picker(player.skills, "Pick a skill to use: ")
 
-            player_damage = player.skills[skill_index].damage * random()
+            # Pick a skill
+            weapon_index = self.object_picker(player.inventory, "Pick a weapon to use: ")
+
+            player_damage = player.inventory[weapon_index].damage * random()
             creature.health -= player_damage
 
             print ""
-            print "You attacked the {0} using skill {1} and dealt {2} damage".format(creature.name, player.skills[i], int(player_damage))
+            print "You attacked the {0} using skill {1} and dealt {2} damage".format(creature.name, player.inventory[weapon_index], int(player_damage))
             print""
             if creature.health <= 0:
                 print "you killed the %s" %creature.name
