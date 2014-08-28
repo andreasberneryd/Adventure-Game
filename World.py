@@ -2,6 +2,7 @@ from random import randint
 from random import choice
 from Level import Level
 from Creature import *
+from Bandage import *
 from Weapon import *
 
 place_names = ["forest", "house", "lake", "desert", "cave", "ravine", "village", "beach", "river"]
@@ -37,6 +38,10 @@ def generate_world(world):
 	for i in range(0, sizey*sizex):
 		name = choice(item_modifiers) + " " + choice(item_names)
 		choice(choice(world)).items.append(Weapon(0, name, randint(15,50)))
+
+	for i in range(int(sizex*sizey/2)):
+		name = choice(item_modifiers) + " healing kit"
+		choice(choice(world)).items.append(Bandage(0, name, randint(3,30)))
 
 def generate_row(row, size):
 	for i in range(size):
