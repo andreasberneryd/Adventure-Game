@@ -2,6 +2,7 @@ from Item import Item
 from random import *
 from random import randint
 import sys
+from Bandage import *
 __author__ = 'andberne'
 
 class Level:
@@ -21,7 +22,9 @@ class Level:
 
 # returns index of picked object
     def object_picker(self, objects, message):
+        print message
         for i in xrange(0, len(objects)):
+            if not isinstance(objects[i], Bandage):
                 print "%d : %s, damage: %d" % (i, objects[i], objects[i].damage)
 
         while True:
@@ -48,7 +51,16 @@ class Level:
             print ""
             print "Creature health: %d, Your health: %d" % (self.creatures[0].health, player.health)
             # Pick a weapon
-
+            for i in xrange(0, len(player.inventory)):
+                if isinstance(player.inventory[i], Bandage):
+                   input = raw_input("You have bandages would you like to use them? ")
+                   if(input == "yes"):
+                       player.health += player.inventory[i].heal
+                       print "your health is now %s" % player.health
+                       break
+                   else:
+                       break
+                    #print "%d : %s, damage: %d" % (i, objects[i], objects[i].damage)
 
             # Pick a skill
             weapon_index = self.object_picker(player.inventory, "Pick a weapon to use: ")
@@ -61,6 +73,7 @@ class Level:
             print""
             if creature.health <= 0:
                 print "you killed the %s" %creature.name
+                self.creatures.remove(creature)
                 break
 
 
