@@ -33,7 +33,7 @@ def generate_world(world):
 
 	for i in range(0, int(sizex*sizey/2)):
 		name = choice(monster_modifiers) + " " + choice(monster_names)
-		choice(choice(world)).creatures.append(Creature(0, name, randint(25,100), randint(25,100)))
+		choice(choice(world)).creatures.append(Creature(0, name, randint(25,100), randint(5,45)))
 
 	for i in range(0, sizey*sizex):
 		name = choice(item_modifiers) + " " + choice(item_names)
