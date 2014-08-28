@@ -8,8 +8,8 @@ from Weapon import *
 place_names = ["forest", "house", "lake", "desert", "cave", "ravine", "village", "beach", "river"]
 place_modifiers = ["old", "haunted", "dark", "uninteresting", "dirty", "burnt"]
 
-item_names = ["sword", "axe", "bow with arrows", "AK-47"]
-item_modifiers = ["a rusty", "an enchanted", "a heavy"]
+item_names = ["sword", "axe", "bow with arrows", "AK-47", "purple dildo"]
+item_modifiers = ["a rusty", "an enchanted", "a heavy", "a dirty", "a huge"]
 
 monster_names = ["troll", "witch"]
 monster_modifiers = ["terrifying", "ugly"]
@@ -33,7 +33,7 @@ def generate_world(world):
 
 	for i in range(0, int(sizex*sizey/2)):
 		name = choice(monster_modifiers) + " " + choice(monster_names)
-		choice(choice(world)).creatures.append(Creature(0, name, randint(25,100), randint(25,100)))
+		choice(choice(world)).creatures.append(Creature(0, name, randint(25,100), randint(5,45)))
 
 	for i in range(0, sizey*sizex):
 		name = choice(item_modifiers) + " " + choice(item_names)
