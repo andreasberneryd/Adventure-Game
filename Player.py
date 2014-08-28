@@ -8,7 +8,7 @@ class Player:
     position = Point(0,0)
     health = 100
     strength = 0
-    inventory = [Weapon(0, "Fist attack", 50)]
+    inventory = [Weapon(0, "Fist attack", 20)]
     skills = []
 
     def __init__(self, world):

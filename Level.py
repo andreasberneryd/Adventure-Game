@@ -55,7 +55,8 @@ class Level:
                 if isinstance(player.inventory[i], Bandage):
                    input = raw_input("You have bandages would you like to use them? ")
                    if(input == "yes"):
-                       player.health += player.inventory[i].heal
+                       player.health = max(player.health + player.inventory[i].heal, 100)
+                       player.inventory.pop(i)
                        print "your health is now %s" % player.health
                        break
                    else:
@@ -65,7 +66,7 @@ class Level:
             # Pick a skill
             weapon_index = self.object_picker(player.inventory, "Pick a weapon to use: ")
 
-            player_damage = player.inventory[weapon_index].damage * random()
+            player_damage = player.inventory[weapon_index].damage * uniform(0.7, 1.0)
             creature.health -= player_damage
 
             print ""
